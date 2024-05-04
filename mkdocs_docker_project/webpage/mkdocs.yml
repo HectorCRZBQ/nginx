@@ -1,0 +1,12 @@
+site_name: "Hector de la Cruz Baquero"
+use_directory_urls: false
+
+theme:
+  name: readthedocs
+  nav_style: dark
+
+nav:
+  - Inicio: 'index.md'
+  - Mis proyectos: 'projects.md'
+  - Sobre mí: 'about.md'
+  - Contacto: 'contact.md'

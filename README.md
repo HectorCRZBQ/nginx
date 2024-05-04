@@ -49,5 +49,71 @@ Para que cada servidor tenga a su vez los tres servidores creados
 
 ![nginx](nginx_images/Imagen8.png)
 
+--- 
+
+# Crear una imagen con mkdocs y nginx, encapsulado en docker.
+
+Entre los elementos que ya hemos creado anteriormente, en este proyecto vamos a utilizar:
+-	La página creada en Mkdocs (HTML, CSS, JS, images, …) que se creó con el comando de **gh-deploy**
+-	El reverse Proxy que creamos con Nginx en su archivo nginx.conf y en hosts
+1.	Vamos a crear un archivo de **Dockerfile** en la ruta donde tenemos nuestra página web, en la ruta **C:\Users\hecto\pagina_web\Hector.github.io**
+**(En este caso vamos a correrlo en el puerto 8018)**
+
+![nginx](nginx_images/Imagen9.png)
+ 
+2.	Revisamos que el **mkdocs.yml** este correctamente diseñado
+
+![nginx](nginx_images/Imagen10.png)
+
+3.	Una vez hayamos creado el archivo, accedemos a su ubicación por medio de Windows Powershell en Administrador dentro de site, siendo la ruta **C:\Users\hecto\pagina_web\Hector.github.io**
+4.	Es importante que tengamos habilitado el Docker Desktop para poder ejecutar los siguientes comandos y evitar el error del cliente de docker
+5.	Ejecutamos el comando **docker build -t mkdocs-nginx-docker-paginawebhector .** para crear la imagen de Docker.
+
+![nginx](nginx_images/Imagen11.png)
+
+6.	Tras ello deberíamos ejecutar el contendor de docker basado en esa imagen con el siguiente comando **docker run -d -p 8018:8018 mkdocs-nginx-docker-paginawebhector**
+
+![nginx](nginx_images/Imagen12.png)
+
+7.	Y por último accedemos usando **http://localhost:8018** a nuestra imagen de página web
+
+![nginx](nginx_images/Imagen13.png)
+
+8.	Incorporar un Proxy Inverso con Nginx
+
+![nginx](nginx_images/Imagen14.png)
+
+9.	Necesitamos abrir una nueva Windows PowerShell, accediendo a donde tengamos Nginx y en concreto al archivo de nginx.conf, en mi caso en la dirección con el comando **cd C:\Users\hecto\Downloads\nginx-1.24.0\conf**
+10.	Ejecutamos el comando para activar nginx, **start ./nginx**
+11.	Actualizamos cualquier cambio que realizamos **./nginx -s reload**
+12.	Si introducimos en el buscador http://paginawebhector.com/ obtenemos la página web
+
+![nginx](nginx_images/Imagen15.png)
+
+---
+
+# Crear una imagen con mkdocs y nginx, encapsulado en docker. **(DESDE CERO)**
+
+1.	Abrimos un Windows PowerShell en administrador
+2.	Creamos una nueva carpeta **mkdir mkdocs_docker_project**
+3.	Clonamos nuestro repositorio local con el comando **git clone --recurse-submodules** **https://github.com/HectorCRZBQ/webpage.git**
+
+![nginx](nginx_images/Imagen16.png)
+
+4.	Accedemos a esa carpeta para clonar nuestra página web **cd C:\Users\hecto\mkdocs_docker_project\webpage**
+5.	Vamos a crear un archivo de **Dockerfile**
+
+![nginx](nginx_images/Imagen17.png)
+
+6.	Es importante que tengamos habilitado el Docker Desktop para poder ejecutar los siguientes comandos y evitar el error del cliente de docker
+7.	Ejecutamos el comando **docker build -t mkdocs-nginx-docker-paginawebhector .** para crear la imagen de Docker.
+
+![nginx](nginx_images/Imagen18.png)
+
+8.	Tras ello deberíamos ejecutar el contendor de docker basado en esa imagen con el siguiente comando **docker run -d -p 8000:8000 mkdocs-nginx-docker-paginawebhector**
+9.	Y por último accedemos usando **http://localhost:8000** a nuestra imagen de pagina web
+
+---
+
 Hector de la Cruz Baquero - [Linkdedin](https://www.linkedin.com/in/h%C3%A9ctor-de-la-cruz-baquero-ba193429b/) - [Webpage](https://hectorcrzbq.github.io/)
 
